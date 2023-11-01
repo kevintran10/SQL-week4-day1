@@ -221,15 +221,29 @@ WHERE last_name LIKE '%es' AND store_id = 1;
 
 -- 9. How many payment amounts (4.99, 5.99, etc.) had a number of rentals above 250 for customers
 -- with ids between 380 and 430? (use group by and having > 250)
+
+-- Personal attempt
 SELECT rental_id, COUNT(amount), customer_id
 FROM payment
 WHERE rental_id BETWEEN 380 AND 430
-GROUP BY payment amount
+GROUP BY amount
 HAVING customer_id > 250;
 
 
 SELECT *
 FROM payment;
+
+--Dylan help
+--the amount of distinct payments
+--condition the pament amout was used for more than 250 rentals
+--contion rentals made by customers is id's between 380 and 430
+SELECT COUNT(amount), amount
+FROM payment
+WHERE customer_id BETWEEN 380 AND 430
+GROUP BY amount
+HAVING COUNT(amount) > 250;
+-- The answer is 3. (-415.01, -419.01, -417.01)
+
 
 -- 10. Within the film table, how many rating categories are there? And what rating has the most
 -- movies total?
